@@ -25,12 +25,24 @@ def print_legs(height , shoe):
 
 def main():
     print('Welcome to the custom character creator tool!')
-    height = int(input('Overall character height (10 - 20) : '))
-    hair = input('Character for the hair: ')
-    eye = input('Character for the eyes: ')
-    arm = input('Character for the arms: ')
-    shoe = input('4-character string for the shoes:')
     
+
+    height = 0
+    while height <= 5 or height >= 10:
+         height = int(input('Overall character height (5 - 10):'))
+         
+    hair = ''
+    eye = ''
+    arm = ''
+    shoe = ''
+
+    while len(hair) != 1 or len(eye) != 1 or len(arm) != 1 or len(shoe) != 4:
+         hair = input('Enter one character for the hair: ')
+         eye = input('Enter one character for the eye: ')
+         arm = input('Enter one character for the arms: ')
+         shoe = input('Enter four character string for the shoes:')
+         print('Invalid quantity of characters , try again. ')
+      
     print()
     print_head(hair,eye)
     print_body(height, arm)
