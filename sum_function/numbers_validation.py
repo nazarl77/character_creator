@@ -8,39 +8,31 @@ def num_summing(nums,amount):
 
     return total
 
-def howmany():
-    num = ''
+def input_list_size():
+    count = ''
     while True:
-        num = input('How many numbers you want to sum up:')
-        
-        if num.isdigit():
-            number = int(num)
-            if number > 0:
-                return number
-            else:
-                print('Number must be greater than 0.Try again.')
+        count = int(input('How many numbers you want to sum up:'))
+        if count > 0:
+            return count
         else:
-            print('Program accepts only whole numbers.')        
+            print('Number must be greater than 0.Try again.')
+              
        
 
-def list_create(amount):       
-     numbers = []
-     while len(numbers) != amount:
-         num = input('Enter a number:')
-         if not num.isdigit():
-            print('Program accepts only numbers.Try again. ')       
-         else:
-            num = int(num)
-            numbers.append(num) 
-     return numbers
+def create_list(amount):       
+     numbers_list = []  
+     while len(numbers_list) != amount:
+         number = int(input('Enter a number:'))              
+         numbers_list.append(number) 
+     return numbers_list
            
 
 
 def main():
     print('Lets sum up your numbers!')
 
-    amount = howmany()
-    numbers = list_create(amount)
+    amount = input_list_size()
+    numbers = create_list(amount)
     total = num_summing(numbers , amount)
     
     print('Summary:' , total)
