@@ -1,51 +1,47 @@
-def sort_asc(nums):
-    for u in range(len(nums) - 1):
-        for i in range(len(nums) - 1):
-            if nums[i] > nums[i + 1]:
-                nums[i],nums[i + 1] = nums[i + 1] , nums[i]
-
-    return nums
-
-def sort_desc(nums):
-    for u in range(len(nums)):
-        for i in range(len(nums) - 1):
-            if nums[i] < nums[i + 1]:
-             nums[i],nums[i + 1] = nums[i + 1],nums[i]
-    return nums
-
-
-
-def order():
+def sorting(numbers,sorting_order):
     print('In what order do u want to sort your numbers?')
     print('Enter "1" for ascending order or "2" for descending order')
-    order = ''
-    while order not in ('1', '2'):
-        order = input('Your choice: "1" or "2":\n').strip()
 
-        if order not in ('1', '2'):
+    sorting_order = ''
+    while sorting_order != 'asc' and sorting_order != 'desc':
+        sorting_order = input('Your choice: "asc" or "desc":\n').strip().lower()
+
+        if sorting_order not in ('asc', 'desc'):
             print('Invalid input, try again')
 
-    return int(order)
+    if sorting_order == 'asc':
+      for u in range(len(numbers) - 1):
+        for i in range(len(numbers) - 1):
+            if numbers [i] > numbers [i + 1]:
+                numbers [i],numbers [i + 1] = numbers [i + 1] , numbers [i]
+
+
+
+    return numbers
+
+def input_order():
+    
+    order = ''
+    while order != 'asc' and order != 'desc':
+        order = input('Your choice: "asc" or "desc":\n').strip().lower()
+
+        if order not in ('asc', 'desc'):
+            print('Invalid input, try again')
+
+    return order
 
 
     
-def l_creation():     
-    nums = []
-    o = howmany()
-    while len(nums) < o:  
-        num = input('Enter a whole number:')
-     
-        try:
-            num = int(num)
-            nums.append(num)
-        except:
-            print('Invalid input.Try again.')
-    return nums
+def create_list():     
+    numbers = []
+    list_size = input_list_size()
+    while len(numbers) < list_size:  
+        num = int(input('Enter a whole number:'))
+        numbers.append(num)
+        
+    return numbers
 
-
-
-
-def howmany():
+def input_list_size():
     i = ''
     while not i.isdigit():
           i = input('How many numbers you wanna sort?(enter digits):\n')
@@ -65,13 +61,11 @@ def howmany():
 def main():
     print('Let me take your numbers and sort them in ascending or descending order\n')
    
-    ord = order()
-    noms = l_creation()
-    if ord == 1:
-       l = sort_asc(noms)
-       print('Your numbers in ascending order:\n', l)  
-    elif ord == 2:
-       q = sort_desc(noms)
-       print('Your numbers in descending order:\n', q)
+    
+    numbers = create_list()
+    l = sorting(numbers,)
+    print('Your numbers in ascending order:\n', l)  
+    q = sorting(numbers,)
+    print('Your numbers in descending order:\n', q)
 
 main()
