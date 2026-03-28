@@ -4,7 +4,7 @@ def count_vowels(string_array):
     for word in string_array:
         count = 0
         for letter in word:
-            if letter in vowels:
+            if letter.isalpha() and letter in vowels:
                 count +=1
         result.append(count)
     return result
@@ -15,6 +15,8 @@ def create_array():
     string = ''
     while string != 'stop':
         string = input('Word:').strip().lower()
+        if string == 'stop':
+            break
         users_list.append(string)
     return users_list
 
