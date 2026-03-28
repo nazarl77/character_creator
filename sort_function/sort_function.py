@@ -1,6 +1,6 @@
-def sorting(numbers,sorting_order):
+def sorting(numbers):
     print('In what order do u want to sort your numbers?')
-    print('Enter "1" for ascending order or "2" for descending order')
+    print('Enter "asc" for ascending order or "desc" for descending order')
 
     sorting_order = ''
     while sorting_order != 'asc' and sorting_order != 'desc':
@@ -9,29 +9,18 @@ def sorting(numbers,sorting_order):
         if sorting_order not in ('asc', 'desc'):
             print('Invalid input, try again')
 
-    if sorting_order == 'asc':
-      for u in range(len(numbers) - 1):
+    
+    for u in range(len(numbers) - 1):
         for i in range(len(numbers) - 1):
             if numbers [i] > numbers [i + 1]:
                 numbers [i],numbers [i + 1] = numbers [i + 1] , numbers [i]
-
-
-
-    return numbers
-
-def input_order():
+                
+    if sorting_order == 'asc':
+        return numbers
+    if sorting_order == 'desc':
+        return numbers[::-1]
     
-    order = ''
-    while order != 'asc' and order != 'desc':
-        order = input('Your choice: "asc" or "desc":\n').strip().lower()
-
-        if order not in ('asc', 'desc'):
-            print('Invalid input, try again')
-
-    return order
-
-
-    
+ 
 def create_list():     
     numbers = []
     list_size = input_list_size()
@@ -59,13 +48,9 @@ def input_list_size():
     
 
 def main():
-    print('Let me take your numbers and sort them in ascending or descending order\n')
-   
-    
-    numbers = create_list()
-    l = sorting(numbers,)
-    print('Your numbers in ascending order:\n', l)  
-    q = sorting(numbers,)
-    print('Your numbers in descending order:\n', q)
+    print('Let me take your numbers and sort them in ascending or descending order\n')      
+    number_list = create_list()
+    sort_list = sorting(number_list)
+    print('Your sorted list:', sort_list)
 
 main()
