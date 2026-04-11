@@ -2,10 +2,11 @@ class Group:
     def __init__(self , group_id , group_name):
         self.group_name = group_name
         self.group_id = group_id
-    def __eq__(self , other):
-        if not isinstance(other , Group):
+
+    def __eq__(self, other):
+        if not isinstance(other, Group):
             return False 
-        return self.group_id == other.group_id and self.group_name == other.group_name
+        return self.group_id == other.group_id or self.group_name == other.group_name
 
 class Student:
     def __init__(self,student_id , name , surname , mark , group_id):
@@ -28,16 +29,11 @@ class SchoolSystem:
             while True:
                 group_id = input('Group ID:\n').strip().lower()
                 group_name = input('Group name:\n').strip().lower()
-                exists = False
-                for group in self.group_list:
-                    if group.group_id == group_id or group.group_name == group_name:
-                        print('Group ID or group name already exist,try another one.')
-                        exists = True
-                        break
-                if not exists:             
-                   break
-                          
-            new_group = Group(group_id , group_name)
+                new_group = Group(group_id, group_name)
+                if new_group in self.group_list:
+                    print('Group ID or group name already exist,try another one.')
+                else:
+                    break
             self.group_list.append(new_group)
         return self.group_list
 
