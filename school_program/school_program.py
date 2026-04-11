@@ -23,7 +23,6 @@ class SchoolSystem:
         self.student_list = []
 
     def add_group(self):
-
         number_groups = int(input('Enter number of groups you want to add to group list:\n'))
         
         for i in range(number_groups):
