@@ -2,6 +2,10 @@ class Group:
     def __init__(self , group_id , group_name):
         self.group_name = group_name
         self.group_id = group_id
+    def __eq__(self , other):
+        if not isinstance(other , Group):
+            return False 
+        return self.group_id == other.group_id and self.group_name == other.group_name
 
 class Student:
     def __init__(self,student_id , name , surname , mark , group_id):
@@ -21,31 +25,22 @@ class SchoolSystem:
     def add_group(self):
 
         number_groups = int(input('Enter number of groups you want to add to group list:\n'))
-        i = 0
-        while i < number_groups:
+        
+        for i in range(number_groups):
             while True:
                 group_id = input('Group ID:\n').strip().lower()
-                exists = False
-                for group in self.group_list:
-                    if group.group_id == group_id:
-                        exists = True
-                if exists:
-                    print('Group ID already exists,try another one.')
-                else:
-                    break
-            while True:        
                 group_name = input('Group name:\n').strip().lower()
                 exists = False
                 for group in self.group_list:
-                    if group.group_name == group_name:
+                    if group.group_id == group_id or group.group_name == group_name:
+                        print('Group ID or group name already exist,try another one.')
                         exists = True
-                if exists:
-                    print('This group name exists, try  another one.')
-                else:
-                    break
+                        break
+                if not exists:             
+                   break
+                          
             new_group = Group(group_id , group_name)
             self.group_list.append(new_group)
-            i += 1
         return self.group_list
 
     def add_student(self):
